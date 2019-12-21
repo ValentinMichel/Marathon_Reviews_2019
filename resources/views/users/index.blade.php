@@ -3,13 +3,13 @@
 @section('content')
     <div class="container col-md-8" style="margin-top: 5%;">
         <!-- Material form register -->
-        <div class="card">
+        <div class="card" style="transform: none; opacity: 1;">
 
             <h5 class="card-header default-color white-text text-center py-4 font-weight-bold">
                 <strong>Mon compte</strong>
             </h5>
             @if($user->avatar != null)
-                <img src="{{url(Auth::user()->avatar)}}" alt="Avatar">
+                <img class="avatar" src="{{url(Auth::user()->avatar)}}" alt="Avatar" style="margin-top: 2%;">
             @endif
 
             <!--Card content-->
@@ -47,7 +47,7 @@
                     <div class="col">
                         <!-- E-mail -->
                         <div class="md-form">
-                            <input type="email" id="materialRegisterFormEmail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{Auth::user()->email}}" required autocomplete="email">
+                            <input type="email" id="materialRegisterFormEmail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{Auth::user()->email}}" required autocomplete="email" readonly>
                             <label for="materialRegisterFormEmail">E-mail</label>
                         </div>
                         @error('email')

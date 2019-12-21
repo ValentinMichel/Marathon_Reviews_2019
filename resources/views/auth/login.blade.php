@@ -5,10 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <!-- Default form login -->
-                <form class="formLog text-center" action="{{ route('login') }}" method="POST"> <!-- suppression div existante et ajout de formLog -->
-
+                <form class="text-center border border-light p-5" action="{{ route('login') }}" method="POST">
                     @csrf
-                    <p class="titreLog">Se connecter</p> <!-- suppression div existante et ajout de titreLog -->
+                    <p class="h4 mb-4 font-weight-bold">Se connecter</p>
 
                     <!-- Email -->
                     <input type="email" id="email" class="form-control mb-4 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="E-mail" required autocomplete="email" autofocus>
@@ -30,19 +29,19 @@
                             <!-- Remember me -->
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                <label class="custom-control-label" for="defaultLoginFormRemember">Se souvenir de moi</label>  <!-- couleur changé dans mdb.min.css orangered -->
+                                <label class="custom-control-label" for="defaultLoginFormRemember">Se souvenir de moi</label>
                             </div>
                         </div>
                         <div>
                         @if (Route::has('password.request'))
                             <!-- Forgot password -->
-                                <a href="{{ route('password.request') }}">Mot de passe oublié ?</a> <!-- couleur changé dans mdb.min.css orangered -->
+                                <a href="{{ route('password.request') }}">Mot de passe oublié ?</a>
                             @endif
                         </div>
                     </div>
 
                     <!-- Sign in button -->
-                    <button class="buttonLog" type="submit">Connexion</button> <!-- suppression de class et de propriété et ajout de buttonLog ->
+                    <button class="btn default-color btn-block my-4" type="submit" style="color: whitesmoke; font-weight: bold;">Connexion</button>
 
                     <!-- Register -->
                     <p>Pas encore membre ?
@@ -56,3 +55,4 @@
         </div>
     </div>
 @endsection
+

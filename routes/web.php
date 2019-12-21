@@ -40,7 +40,7 @@ Route::get('/serie', 'SerieController@index')->name('serie');
 Route::get('/serie/{id}', function (){
     return view('SerieController@show', '{{id}}');
 })->middleware('auth')->name('serie.show');
-Route::get('/avis/create','SerieController@adAvis')->name('adAvis');
+Route::get('/avis/create','SerieController@adAvis')->middleware('is_admin')->name('adAvis');
 // Route seen
 Route::get('episode.hasSeenEpisode', 'EpisodeController@hasSeenEpisode')->middleware('auth')->name('hasSeenEpisode');
 Route::get('saison/seen', 'SerieController@hasSeenSeason')->middleware('auth')->name('hasSeenSeason');

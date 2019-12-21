@@ -20,7 +20,16 @@ class EpisodeController extends Controller
         $id = $request->get("serie");
         $serie = Serie::findOrFail($id);
         $episodes = Serie::findOrFail($id)->episodes()->where('saison', $request->get("saison"))->get();
-        return view('episode.index', ['episodes' => $episodes, 'serie' => $serie]);
+        $episodesSeen = Auth::user()->seen()->get();
+        $nbEpisodesSeen = 0;
+        $seasonSeen = false;
+        foreach ($episodesSeen as $episodeSeen){
+            if($episodeSeen->saison == $request->get("saison") && $episodeSeen->serie_id == $serie->id){
+                $nbEpisodesSeen++;
+            }
+        }
+        if($nbEpisodesSeen == count($episodes)) $seasonSeen = true;
+        return view('episode.index', ['episodes' => $episodes, 'serie' => $serie, 'seasonSeen' => $seasonSeen]);
     }
 
     /**

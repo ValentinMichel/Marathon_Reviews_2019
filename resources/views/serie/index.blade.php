@@ -1,13 +1,13 @@
 @extends('layouts.master')
 @section('title', 'Les séries')
 @section('content')
-    <div class="row" style="margin-bottom: 2%;">
+    <div class="row justify-content-center">
         <div style="margin-top: 1%;">
             <form action="{{route("serie")}}" method="get" class="form-inline my-2 my-lg-0">
                 <div class="input-group">
-                    <input type="search" name="search" class="form-control mr-sm-2" type="text" placeholder="Rechercher une série..." style="width: 200px;">
+                    <input type="search" name="search" class="form-control mr-sm-2" type="text" placeholder="Rechercher une série..." style="width: 200px; margin-top: 2%;">
                     <span class="input-group-prepend">
-                        <button type="submit" class="btnSearch">Rechercher</button> <!-- ajout d'une class btnSearch -->
+                        <button type="submit" class="btn btn-md btn-teal">Rechercher</button>
                     </span>
                 </div>
             </form>
@@ -20,22 +20,24 @@
                         <option value="{{$langue}}"  @if($cat == $langue) selected @endif>{{$langue}}</option>
                     @endforeach
                 </select>
-                <button type="submit" class="btnSearch" style="margin-left: 20px;">OK</button>
+                <button type="submit" class="btn btn-md btn-teal" style="margin-left: 20px;">Trier</button>
             </form>
         </div>
     </div>
-
-    <div class="tousSeries"> <!-- ajout d'une div pour toutes les series -->
+    <hr/>
+    <div class="text-center teal-text h1 text-uppercase">Les séries</div>
+    <div class="serie-container"> <!-- ajout d'une div pour toutes les series -->
     @if(!empty($series))
         @foreach($series as $serie)
             <div class="card" style="display: inline-block;">
-                <img src="{{asset($serie->urlImage)}}" class="card-img-top">
+                <a href="{{route('serie.show', $serie->id)}}">
+                    <img src="{{asset($serie->urlImage)}}" class="card-img-top">
+                </a>
                 <div class="card-body" style="text-align: center">
-                    <h5 class="card-title">{{$serie->nom}}</h5>
-                    <p class="card-text">{{$serie->langue}}</p>
-                    <a href="{{route('serie.show', $serie->id)}}" class="btn btn-primary">
-                        <img class="imgButton" src="{{asset('img/logo/buttonRec.png')}}"> <!-- ajout de imgButton -->
+                    <a href="{{route('serie.show', $serie->id)}}">
+                        <h5 class="card-title">{{$serie->nom}}</h5>
                     </a>
+                    <p class="card-text">{{$serie->langue}}</p>
                 </div>
             </div>
         @endforeach

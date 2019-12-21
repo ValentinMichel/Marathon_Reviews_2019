@@ -1,6 +1,6 @@
 <!--Navbar-->
  <header>  <!--ajout header -->
- <nav class="navbar navbar-expand-lg maMarge">  <!--  ajout de maMarge -->
+ <nav class="navbar navbar-expand-lg navbar-center">
 
     <!-- Navbar brand -->
     <a class="navbar-brand" href="{{route('home')}}">
@@ -32,6 +32,7 @@
                     <a class="dropdown-item" href="">Statistiques</a>
                 </div>
             </li>-->
+
 
 
 

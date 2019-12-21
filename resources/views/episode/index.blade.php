@@ -58,7 +58,9 @@
             @method('GET')
             <input type="hidden" value="{{$episode->serie_id}}" name="serie_id">
             <input type="hidden" value="{{$episode->saison}}" name="saison">
-            <button type="submit" class="btn btn-orange font-weight-bold">J'ai vu cette saison !</button>
+            @if(!$seasonSeen)
+                <button type="submit" class="btn btn-orange font-weight-bold">J'ai vu cette saison !</button>
+            @endif
         </form>
     </div>
 

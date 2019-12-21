@@ -31,6 +31,13 @@ class UserController extends Controller
     }
 
     function update(Request $request){
+        $this->validate(
+            $request,
+            [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
         $user = User::findOrFail($request->id);
         $avatar = $this->upload($request);
         if($request->name != $user->name) $user->name = $request->name;
@@ -41,7 +48,7 @@ class UserController extends Controller
         if($user->avatar != null && $avatar != null) Storage::delete('avatars/'.$user->avatar);
         if($avatar != null) $user->avatar = $avatar;
         $user->save();
-        return back();
+        return back()->with('success', 'Votre compte a été édité avec succès.');
     }
     public function stats(){
         $user = Auth::user();

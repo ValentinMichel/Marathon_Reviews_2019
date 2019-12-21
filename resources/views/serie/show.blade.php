@@ -1,33 +1,18 @@
 @extends("layouts.master")
 @section('title', "{$serie->nom}")
 @section("content")
-    <style>
-        .td-title{
-            font-weight: bold;
-        }
-        .backToPage{
-            text-align: center;
-        }
-    </style>
-<div class="tabSerie">
-    <div class='img'>
-        @if($serie->urlImage !== null)
-                <tr>
-                    <td colspan="2"><img src="{{asset($serie->urlImage)}}" style="margin: auto; display: block; max-width: 100%; max-height: 40vh;"></td>
-                </tr>
-            @endif
-    </div>
-
     <div>
         <table class="table table-striped table-hover table-bordered" style="margin-left: auto; margin-right: auto; width: 100%; margin-top: 3%;">
             <thead>
             <tr>
-                <td colspan="2" class="titreSerie" style="text-align: center">
+                <td colspan="3" class="titreSerie" style="text-align: center">
                     {{$serie->nom}}
                 </td>
             </tr>
             </thead>
-
+            @if($serie->urlImage !== null)
+                <td rowspan="11"><img class="img" src="{{asset($serie->urlImage)}}"></td>
+            @endif
             <tr>
                 <td style="width: 160px;" class="td-title">Identifiant série</td>
                 <td>{{$serie->id}}</td>
@@ -84,9 +69,8 @@
             @endif
         </table>
     </div>
-    </div>
     <div class="backToPage">
-        <a href="{{route('home')}}"><button class="btn btn-info btnSearch">Home</button></a> <!-- ajout de la class btnSearch-->
+        <a href="{{route('home')}}"><button class="btn btn-blue">Home</button></a> <!-- ajout de la class btnSearch-->
         @if(!$hasSeen)
         <form method="post" action="{{route('hasSeenSerie')}}" style="display: inline;">
             @csrf
@@ -241,11 +225,13 @@
             @endif
             <div>
                 <a href="{{route('comment.create',[$serie->id])}}">
-                    <button class="btn">Ajouter un commentaire</button>
+                    <button class="btn btn-green">Ajouter un commentaire</button>
                 </a>
+                @if(\Illuminate\Support\Facades\Auth::user()->isAdmin())
                 <a href="{{route('adAvis',['serie_id'=>$serie->id])}}">
-                    <button class="btn">Ajouter un avis</button>
+                    <button class="btn btn-teal">Ajouter un avis</button>
                 </a>
+                @endif
             </div>
         @else
             <h5 style="text-align: center; color: rgb(218, 43, 14);">Aucun commentaire pour cette série actuellement.</h5>

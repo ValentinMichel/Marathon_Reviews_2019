@@ -69,6 +69,7 @@ class SerieController extends Controller
             }
         }
         if($nbSeens == $nbEpisodes) $serieSeen = true;
+        $auteurs = [];
         foreach ($comments as $comment){
             $auteur = User::findOrFail($comment->user_id);
             $auteurs[$comment->id] = $auteur->name;

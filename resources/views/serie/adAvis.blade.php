@@ -2,7 +2,7 @@
 @section('title', "Avis de {$serie->nom}")
 @section("content")
 
-    <div style="background-color:rgba(232,231,231,0.4); border:  1px solid black; border-radius: 5px; width: 80%; margin: auto; margin-top: 2rem; margin-bottom: 5rem">
+    <div class="text-center" style="background-color:rgba(232,231,231,0.4); border:  1px solid rgba(0, 0, 0, 0.3); border-radius: 5px; width: 80%; margin: auto; margin-top: 2rem; margin-bottom: 5rem">
         <form action="{{route('serie.store')}}" method="POST">
             {!! csrf_field() !!}
             <input type="hidden" name="serie_id" value="{{$serie->id}}">
@@ -10,10 +10,9 @@
                 <h3>Ajouter un avis</h3>
                 <hr class="mt-2 mb-2">
             </div>
-            <div class="form-group">
-                <label for="avis"><strong>avis : </strong></label>
+            <div class="form-group col-md-12">
                 <textarea name="avis" id="content" rows="6" class="form-control"
-                          placeholder="avis ..">{{$serie->avis}}</textarea>
+                          placeholder="Indiquer l'avis de la rédaction ...">{{$serie->avis}}</textarea>
             </div>
             <div>
                 <button class="btn btn-success" type="submit">Valide</button>

@@ -3,22 +3,17 @@
 @section('content')
     <div class="container col-md-8" style="margin-top: 5%;">
         <!-- Material form register -->
-        
-        <!--supression de la div  Content-->
-            <!-- Deplacement du h5 dans la forme -->
+        <div class="card" style="transform: none; opacity: 1;">
+
+            <h5 class="card-header default-color white-text text-center py-4 font-weight-bold">
+                <strong>Inscription</strong>
+            </h5>
 
             <!--Card content-->
-            <!--supression d'une div -->
+            <div class="card-body px-lg-5 pt-0">
 
                 <!-- Form -->
-                <form method="POST" class="formLog text-center" style="color: #757575;" action="{{ route('register') }}"> <!-- uniformisation des class avec le login -->
-
-                    <h5 class="titreRegister">
-                    <strong>Inscription</strong>
-                    </h5>
-
-
-
+                <form method="POST" class="text-center" style="color: #757575;" action="{{ route('register') }}">
                     @csrf
                     <div class="form-row">
                         <div class="col">
@@ -87,7 +82,7 @@
                     -->
 
                     <!-- Sign up button -->
-                    <button class="buttonLog" type="submit">Confirmer mon inscription</button>
+                    <button class="btn default-color my-4 col-md-8" type="submit" style="color: whitesmoke; font-weight: bold;">Confirmer mon inscription</button>
                     <hr>
                     <!-- Terms of service -->
                     <p>En confirmant <em>votre inscription</em>, vous agréer à nos <a href="">conditions d'utilisation.</a>
@@ -95,9 +90,9 @@
                 </form>
                 <!-- Form -->
 
-    
+            </div>
 
-    
+        </div>
         <!-- Material form register -->
     </div>
 @endsection
